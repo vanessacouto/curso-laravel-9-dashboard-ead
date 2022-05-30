@@ -25,6 +25,7 @@ class UserRepository implements UserRepositoryInterface
                 }
             })
             ->get();
+            
         return $users->toArray(); // espera que retornemos um array
     }
 
