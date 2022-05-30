@@ -15,6 +15,8 @@ class UserService
 
     public function getAll(string $filter = ''): array {
         return $this->repository->getAll($filter);
+        
+        //return collect($users); // converte o resultado para uma Collection
     }
 
     public function findById(string $id): object|null {

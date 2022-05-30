@@ -21,8 +21,6 @@ class UserController extends Controller
             filter: $request->get('filter', '') // pega o filter, ou o valor default é vazio
         );
 
-        dd($users);
-
         return view('admin.users.index', compact('users'));
     }
 }
