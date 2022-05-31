@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Services\UserService;
 use App\Http\Requests\StoreUser;
+use App\Http\Requests\UpdateUser;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -32,7 +33,10 @@ class UserController extends Controller
 
     public function store(StoreUser $request) 
     {
-        $this->service->create($request->validated()); // validated: traz somente os dados que foram validados
+        $data = $request->validated();
+        $data['password'] = bcrypt($data['password']);
+
+        $this->service->create($data); // validated: traz somente os dados que foram validados
      
         return redirect()->route('users.index');
     }
@@ -46,8 +50,18 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
-    public function update(Request $request, $id) 
+    public function update(UpdateUser $request, $id) 
     {
-        
+        $data = $request->only(['name', 'email']);
+
+        if ($request->password) {
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        if(!$this->service->update($id, $data)) {
+            return back();
+        }
+
+        return redirect()->route('users.index');
     }
 }
