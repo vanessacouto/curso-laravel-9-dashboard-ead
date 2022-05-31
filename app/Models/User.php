@@ -42,7 +42,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'id' => 'string', // se nao fizer esse cast, entende que o id é um numero
     ];
+
+    public $incrementing = false;
 
     // nova forma de fazer o método 'getCreatedAtAttribute'
     protected function createdAt(): Attribute

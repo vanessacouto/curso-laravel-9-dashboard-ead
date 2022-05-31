@@ -36,5 +36,18 @@ class UserController extends Controller
      
         return redirect()->route('users.index');
     }
-    
+
+    public function edit($id) 
+    {
+        if (!$user = $this->service->findById($id)) { // se não encontrar o user
+            return redirect()->back(); // retorna pra pagina que fez o request
+        }
+
+        return view('admin.users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id) 
+    {
+        
+    }
 }
