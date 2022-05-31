@@ -64,4 +64,17 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
     }
+    
+    public function changeImage($id) {
+
+        if(!$user = $this->service->findById($id)) {
+            return back();
+        }
+
+        return view('admin.users.change-image', compact('user'));
+    }
+
+    public function uploadFile(Request $request) {
+        dd($request->image);
+    }
 }

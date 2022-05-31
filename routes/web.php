@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\{
 */
 
 Route::prefix('admin')->group(function () {
+    Route::put('/users/{id}/update-image', [UserController::class, 'uploadFile'])->name('users.update.image');
+    Route::get('/users/{id}/image', [UserController::class, 'changeImage'])->name('users.change.image');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
