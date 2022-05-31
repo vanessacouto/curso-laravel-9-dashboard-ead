@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use stdClass;
 use App\Repositories\UserRepositoryInterface;
 
 class UserService
@@ -14,7 +15,18 @@ class UserService
     }
 
     public function getAll(string $filter = ''): array {
-        return $this->repository->getAll($filter);
+        $users = $this->repository->getAll($filter);
+        $users = array_map(function ($data) {
+            // converte pra um stdclass
+            $stdClass = new stdClass;
+            foreach($data as $key => $value) {
+                $stdClass->{$key} = $value;
+            }
+            return $stdClass; // agora temos um objeto genérico, não mais um array
+        }, $users);
+
+        return $users;
+        // return $this->repository->getAll($filter);
         
         //return collect($users); // converte o resultado para uma Collection
     }
