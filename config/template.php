@@ -12,5 +12,10 @@ return [
             'url' => '/admin/users',
             'icon' => 'fas fa-user'
         ],
+        [
+            'name' => 'Admins',
+            'url' => '/admin/admins',
+            'icon' => 'fas fa-robot'
+        ],
     ]
 ];
