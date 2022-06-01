@@ -6,6 +6,7 @@ use App\Services\UploadFile;
 use Illuminate\Http\Request;
 use App\Services\UserService;
 use App\Http\Requests\StoreUser;
+use App\Http\Requests\StoreImage;
 use App\Http\Requests\UpdateUser;
 use App\Http\Controllers\Controller;
 
@@ -76,7 +77,7 @@ class UserController extends Controller
         return view('admin.users.change-image', compact('user'));
     }
 
-    public function uploadFile(Request $request, UploadFile $uploadFile, $id) {
+    public function uploadFile(StoreImage $request, UploadFile $uploadFile, $id) {
         $path = $uploadFile->store($request->image, 'users'); // retorna o path onde armazenou
 
         // atualiza o usuario
