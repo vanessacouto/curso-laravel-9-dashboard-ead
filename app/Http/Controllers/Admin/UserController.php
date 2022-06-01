@@ -21,7 +21,8 @@ class UserController extends Controller
     public function index(Request $request) 
     {
         $users = $this->service->getAll(
-            filter: $request->get('filter', '') // pega o filter, ou o valor default é vazio
+            filter: $request->filter ?? ""
+            // filter: $request->get('filter', '') // pega o filter, ou o valor default é vazio
         );
 
         return view('admin.users.index', compact('users'));
