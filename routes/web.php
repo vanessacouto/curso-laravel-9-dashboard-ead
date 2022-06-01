@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\{
     AdminController,
     DashboardController,
     UserController,
+    CourseController
 };
 
 /*
@@ -19,6 +20,12 @@ use App\Http\Controllers\Admin\{
 */
 
 Route::prefix('admin')->group(function () {
+     /**
+    * Routes Course
+    */
+    Route::resource('/courses', CourseController::class);
+
+
     /**
     * Routes Admin
     */

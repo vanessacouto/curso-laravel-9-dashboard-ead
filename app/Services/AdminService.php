@@ -14,10 +14,9 @@ class AdminService
     }
 
     public function getAll(string $filter = ''): array {
-        $users = $this->repository->getAll($filter);
+        $admins = $this->repository->getAll($filter);
 
-        return convertItemsOfArrayToObject($users);
-        //return collect($users); // converte o resultado para uma Collection
+        return convertItemsOfArrayToObject($admins);
     }
 
     public function findById(string $id): object|null {

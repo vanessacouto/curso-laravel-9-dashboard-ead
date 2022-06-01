@@ -17,5 +17,10 @@ return [
             'url' => '/admin/admins',
             'icon' => 'fas fa-robot'
         ],
+        [
+            'name' => 'Cursos',
+            'url' => '/admin/courses',
+            'icon' => 'fas fa-video'
+        ],
     ]
 ];
