@@ -23,6 +23,7 @@ class ModuleRepository implements ModuleRepositoryInterface
                 }
             })
             ->where('course_id', $courseId)
+            ->with('course')
             ->get();
             
         return $modules->toArray(); // espera que retornemos um array
