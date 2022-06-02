@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\{
     AdminController,
     DashboardController,
     UserController,
-    CourseController
+    CourseController,
+    ModuleController,
 };
 
 /*
@@ -21,10 +22,15 @@ use App\Http\Controllers\Admin\{
 
 Route::prefix('admin')->group(function () {
      /**
+    * Routes Modules
+    */
+    // como vamos fazer o Modulo dentro de Curso, sempre teremos que passar o id do Curso
+    Route::resource('/courses/{courseId}/modules', ModuleController::class);
+
+    /**
     * Routes Course
     */
     Route::resource('/courses', CourseController::class);
-
 
     /**
     * Routes Admin
