@@ -33,4 +33,9 @@ class CourseService
     {
         return $this->repository->update($id, $data);
     }
+
+    public function delete(string $id)
+    {
+        return $this->repository->delete($id);
+    }
 }

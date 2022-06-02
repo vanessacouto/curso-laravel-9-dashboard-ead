@@ -56,11 +56,19 @@
                                 </p>
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <a href="{{ route('courses.edit', $course->id) }}">
+                                <a href="{{ route('courses.show', $course->id) }}">
                                     <span
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                         <span aria-hidden
                                             class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                        <span class="relative">Detalhes</span>
+                                    </span>
+                                </a>
+                                <a href="{{ route('courses.edit', $course->id) }}">
+                                    <span
+                                        class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
+                                        <span aria-hidden
+                                            class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
                                         <span class="relative">Editar</span>
                                     </span>
                                 </a>
