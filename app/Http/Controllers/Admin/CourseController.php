@@ -6,7 +6,7 @@ use App\Services\UploadFile;
 use Illuminate\Http\Request;
 use App\Services\CourseService;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Course\StoreCourse;
+use App\Http\Requests\Course\StoreUpdateCourse;
 
 class CourseController extends Controller
 {
@@ -31,7 +31,7 @@ class CourseController extends Controller
         return view('admin.courses.create');
     }
 
-    public function store(StoreCourse $request, UploadFile $uploadFile) 
+    public function store(StoreUpdateCourse $request, UploadFile $uploadFile) 
     {
         $data = $request->only('name');
         $data['available'] = isset($request->available); // se existir, retorna 'true'
@@ -54,7 +54,7 @@ class CourseController extends Controller
         return view('admin.courses.edit', compact('course'));
     }
 
-    public function update(Request $request, UploadFile $uploadFile, $id) 
+    public function update(StoreUpdateCourse $request, UploadFile $uploadFile, $id) 
     {
         $data = $request->only('name');
         $data['available'] = isset($request->available); // se existir, retorna 'true'
