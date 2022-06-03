@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateModule;
 use App\Repositories\CourseRepositoryInterface;
 use App\Repositories\ModuleRepositoryInterface;
 
@@ -44,7 +45,7 @@ class ModuleController extends Controller
         return view('admin.courses.modules.create-modules', compact('course'));
     }
 
-    public function store(Request $request, $courseId)
+    public function store(StoreUpdateModule $request, $courseId)
     {
         // se não encontrar o Curso
         if (!$course = $this->repositoryCourse->findById($courseId)) {
@@ -75,7 +76,7 @@ class ModuleController extends Controller
         return view('admin.courses.modules.edit-modules', compact('course', 'module'));
     }
 
-    public function update(Request $request, $courseId, $id)
+    public function update(StoreUpdateModule $request, $courseId, $id)
     {
         // se não encontrar o Curso
         if (!$this->repositoryCourse->findById($courseId)) {
