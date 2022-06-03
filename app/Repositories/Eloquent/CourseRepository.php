@@ -19,7 +19,6 @@ class CourseRepository implements CourseRepositoryInterface
         $courses = $this->model
             ->where(function ($query) use ($filter) {
                 if ($filter) {
-                    $query->where('email', $filter);
                     $query->orWhere('name', 'LIKE', "%{$filter}%");
                 }
             })
