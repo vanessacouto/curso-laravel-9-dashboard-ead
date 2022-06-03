@@ -53,7 +53,7 @@ class ModuleController extends Controller
         }
 
         $this->repository
-                ->createByCourse($courseId, $request->only(['name']));
+            ->createByCourse($courseId, $request->only(['name']));
 
         // dessa maneira já cadastra o modulo para esse $course
         // $course->modules()-create($request->only(['name']));
@@ -85,6 +85,31 @@ class ModuleController extends Controller
 
         $this->repository->update($id, $request->only('name'));
 
-        return redirect()->route('modules.index', $courseId); 
+        return redirect()->route('modules.index', $courseId);
+    }
+
+    public function show($courseId, $id)
+    {
+        // se não encontrar o Curso
+        if (!$course = $this->repositoryCourse->findById($courseId)) {
+            return back();
+        }
+
+        // se não encontrar o Modulo
+        if (!$module = $this->repository->findById($id)) {
+            return back();
+        }
+
+        return view('admin.courses.modules.show-modules', compact('course', 'module'));
+    }
+
+    public function destroy($courseId, $id)
+    {
+        // se não deletar, redireciona de volta
+        if (!$this->repository->delete($id)) {
+            return back();
+        }
+
+        return redirect()->route('modules.index', $courseId);
     }
 }
