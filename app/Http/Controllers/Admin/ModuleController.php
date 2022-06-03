@@ -21,14 +21,17 @@ class ModuleController extends Controller
         $this->repositoryCourse = $repositoryCourse;
     }
 
-    public function index($courseId)
+    public function index(Request $request, $courseId)
     {
         // se não encontrar o Curso
         if (!$course = $this->repositoryCourse->findById($courseId)) {
             return back();
         }
 
-        $data = $this->repository->getAllByCourseId($courseId);
+        $data = $this->repository->getAllByCourseId(
+            courseId: $courseId,
+            filter: $request->filter ?? ''
+        );
         $modules = convertItemsOfArrayToObject($data);
         // não podemos acessar direto $modules->course, vamos injetar o repositorio de curso no construtor e pegar o curso
 
