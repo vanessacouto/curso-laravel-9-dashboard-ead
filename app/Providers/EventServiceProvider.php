@@ -6,11 +6,13 @@ use App\Models\{
     Admin,
     User,
     Course,
+    Lesson
 };
 use App\Observers\{
     AdminObserver,
     UserObserver,
     CourseObserver,
+    LessonObserver,
 };
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
@@ -40,6 +42,7 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         Admin::observe(AdminObserver::class);
         Course::observe(CourseObserver::class);
+        Lesson::observe(LessonObserver::class);
     }
 
     /**
