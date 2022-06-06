@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Admin;
 use App\Models\Lesson;
 use App\Models\ReplySupport;
 use Illuminate\Database\Eloquent\Model;
