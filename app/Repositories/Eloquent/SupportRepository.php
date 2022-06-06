@@ -17,13 +17,9 @@ class SupportRepository implements SupportRepositoryInterface
     public function getByStatus(string $status): array
     {
         $supports = $this->model
-            ->where(function ($query) use ($status) {
-                if ($status) {
-                    $query->orWhere('status', 'LIKE', "%{$status}%");
-                }
-            })
-            //->with()
-            ->get();
+                    ->where('status', $status)
+                    ->with(['user', 'lesson']) // traz os relacionamentos com user e lesson
+                    ->get();
             
         return $supports->toArray(); // espera que retornemos um array
     }
