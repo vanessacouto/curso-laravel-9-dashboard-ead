@@ -15,8 +15,11 @@ class ReplySupportController extends Controller
         $this->repository = $repository;
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $supportId)
     {
-        
+        $data = $request->only('description', 'support_id');
+        $this->repository->createReplyToSupport($data);
+
+        return redirect()->route('supports.show', $supportId);
     }
 }
