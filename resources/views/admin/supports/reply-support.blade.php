@@ -79,7 +79,7 @@
 
             </div>
             <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
-            {{-- <div class="relative flex">
+            <div class="relative flex">
                 <form action="{{ route('replies.store', $support->id) }}" method="post" class="w-full">
                     @csrf
                     <input type="hidden" name="support_id" value="{{ $support->id }}">
@@ -93,11 +93,9 @@
                         </button>
                     </div>
                 </form>
-            </div> --}}
+            </div>
             </div>
         </div>
-
-
     </div>
 </div>
 
