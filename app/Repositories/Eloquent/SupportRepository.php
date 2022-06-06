@@ -19,9 +19,10 @@ class SupportRepository implements SupportRepositoryInterface
         $supports = $this->model
             ->where(function ($query) use ($status) {
                 if ($status) {
-                    $query->orWhere('name', 'LIKE', "%{$status}%");
+                    $query->orWhere('status', 'LIKE', "%{$status}%");
                 }
             })
+            //->with()
             ->get();
             
         return $supports->toArray(); // espera que retornemos um array
