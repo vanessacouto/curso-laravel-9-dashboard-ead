@@ -11,6 +11,8 @@ class Module extends Model
 {
     use HasFactory, UuidTrait;
 
+    public $incrementing = false;
+
     protected $fillable = [
         'course_id',
         'name'

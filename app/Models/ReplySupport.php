@@ -9,6 +9,8 @@ class ReplySupport extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     protected $fillable = [
         'user_id', 'admin_id', 'support_id', 'description'
     ];

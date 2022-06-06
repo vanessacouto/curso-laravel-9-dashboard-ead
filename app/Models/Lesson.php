@@ -9,6 +9,8 @@ class Lesson extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+    
     /**
      * The attributes that should be cast.
      *

@@ -11,6 +11,8 @@ class Support extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+    
     protected $fillable = [
         'status', 'description', 'user_id', 'lesson_id'
     ];
