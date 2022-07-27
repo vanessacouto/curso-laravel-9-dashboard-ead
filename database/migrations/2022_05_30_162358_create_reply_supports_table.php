@@ -16,14 +16,13 @@ return new class extends Migration
         Schema::create('reply_support', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('support_id')->index();
-            $table->uuid('user_id')->nullable(); // id de user pois um aluno pode responder o support
-            $table->uuid('admin_id')->nullable(); // support pode ser respondido por um admin
+            $table->foreign('support_id')->references('id')->on('supports');
+            $table->uuid('user_id')->index()->nullable(); // id de user pois um aluno pode responder o support
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->uuid('admin_id')->index()->nullable(); // support pode ser respondido por um admin
+            $table->foreign('admin_id')->references('id')->on('admins');
             $table->text('description');
             $table->timestamps();
-
-            $table->foreign('support_id')
-            ->references('id')
-            ->on('supports');
         });
     }
 
