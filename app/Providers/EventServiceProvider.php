@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use App\Events\SupportReplied;
+use App\Listeners\SendEmailSupportReplied;
 use App\Models\{
     Admin,
     User,
@@ -32,6 +33,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        SupportReplied::class => [
+            SendEmailSupportReplied::class,
+        ]
     ];
 
     /**
