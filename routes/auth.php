@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+    // aceitar qualquer rota HTTP
+    Route::any('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 });
