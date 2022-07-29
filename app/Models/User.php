@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -54,6 +55,13 @@ class User extends Authenticatable
         // recursos do php 8
         return Attribute::make(
             get: fn ($value) => Carbon::make($value)->format('d/m/Y'),
+        );
+    }
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ? Storage::url($value) : null,
         );
     }
 
